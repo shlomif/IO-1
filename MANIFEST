@@ -11,12 +11,13 @@ IO/Select.pm			(v1.13) System select() interface
 IO/Socket.pm			(v1.20) Socket handle package
 IO/Socket/INET.pm		(v1.20) INET specific Socket methods
 IO/Socket/UNIX.pm		(v1.20) UNIX specific Socket methods
-MANIFEST
-META.yml                                 Module meta-data (added by MakeMaker)
 Makefile.PL
-README
+MANIFEST
+META.yml			Module meta-data (added by MakeMaker)
 poll.c				poll() emulation with select
 poll.h
+README
+SIGNATURE
 t/IO.t
 t/io_const.t
 t/io_dir.t
