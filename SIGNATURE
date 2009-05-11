@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.50.
+signed via the Module::Signature module, version 0.55.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,23 +14,23 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 c6bb521546eb0533b958f2fb48b3e5d3a282a465 ChangeLog
-SHA1 a371e953493ef34636e54278f48f273f2cc5c615 IO.pm
-SHA1 7903f45db80dd724b20963d5c4eb91182fba0578 IO.xs
-SHA1 65268ea8066b3bef10181c5b2d071ccb20286cd9 IO/Dir.pm
-SHA1 5cd96bae6ea66c6697becd5de9deb33833165646 IO/File.pm
-SHA1 f096754f5e6f4f3b5856d1b5cede65b5e4f6cd59 IO/Handle.pm
-SHA1 8e27e33e1c1412fc5e8fc69a94426e2a94d47d79 IO/Pipe.pm
-SHA1 641773c8d7232af97945b5a0fad5524c43198c6f IO/Poll.pm
-SHA1 fb2c1270260aae4a464c47a7592aa471c9105dfa IO/Seekable.pm
-SHA1 378fe48b732975a6955c55bbe62680c2b59824c3 IO/Select.pm
-SHA1 965489dc6b0b2234dc3abe8e16647aa73cf34944 IO/Socket.pm
-SHA1 5b1ae9040dd2bc85b7b1a73e413f5a8ff99b384f IO/Socket/INET.pm
-SHA1 62ac6d72686dd4deb56baa1606af9e94082ee15f IO/Socket/UNIX.pm
-SHA1 57500484aa8174c7b860564da51ab9186043f655 MANIFEST
-SHA1 0b2c216fe3a5c478e200f2567ce471438aa846ea META.yml
-SHA1 b825602e67f86b15c9b3df6941df362faf9bca7b Makefile.PL
+SHA1 16dba68b6af697b169ff1422c9330cfe5aee1062 ChangeLog
+SHA1 5cbda8e10070bfcda695ecccf09dcad100c63d70 IO.pm
+SHA1 dfaa60111f7f4b4802462c16a808afdbf4ee776b IO.xs
+SHA1 68740fe4a2ceb1d615fe72602c7343ccdfed11ff MANIFEST
+SHA1 e131a947666c2b7d53b45ed823311c6a691faf1b META.yml
+SHA1 5b300042817f21160bd7757b46907cc39de8ed95 Makefile.PL
 SHA1 95dd3cdd177410b7e05e8be47257de3fd0e5a2de README
+SHA1 e4fcabde41329f6879cbd0b803f757504752f044 lib/IO/Dir.pm
+SHA1 5cd96bae6ea66c6697becd5de9deb33833165646 lib/IO/File.pm
+SHA1 a854decefd91a3b32866836f8401dd434ec9fe72 lib/IO/Handle.pm
+SHA1 8e27e33e1c1412fc5e8fc69a94426e2a94d47d79 lib/IO/Pipe.pm
+SHA1 641773c8d7232af97945b5a0fad5524c43198c6f lib/IO/Poll.pm
+SHA1 fb2c1270260aae4a464c47a7592aa471c9105dfa lib/IO/Seekable.pm
+SHA1 378fe48b732975a6955c55bbe62680c2b59824c3 lib/IO/Select.pm
+SHA1 dfa94578d1272f54d1b7336cca619b676c4ba358 lib/IO/Socket.pm
+SHA1 8075ebe07903acf2f8fb96df319ce1602f9b4a72 lib/IO/Socket/INET.pm
+SHA1 62ac6d72686dd4deb56baa1606af9e94082ee15f lib/IO/Socket/UNIX.pm
 SHA1 5f8c30523272b59c8952b2c63579f78de5e5f239 poll.c
 SHA1 20378e1968187ad569e3d69bb5077badb8c83fd1 poll.h
 SHA1 0b7ca8e23654a2d02ef533b0037ceec9fb0ada47 t/IO.t
@@ -39,22 +39,22 @@ SHA1 0acead28ce3b5d7a2dcfa8a128625d146a7641eb t/io_dir.t
 SHA1 09674bf9199ae652efad49eb9d1d1f428357f824 t/io_dup.t
 SHA1 7a245c6f1ea59b7e7f5d20d95a532f18434274d1 t/io_file.t
 SHA1 4e9c13f5b4573814318d4fe7068de542a3404341 t/io_linenum.t
-SHA1 79ef65aed83fa42f0a1e631163f1d02ad6a701a7 t/io_multihomed.t
-SHA1 8ebad2688f45772c3e8db14b942454b0ce70315d t/io_pipe.t
+SHA1 3c1b6e51ab7c21887c4519824abbda4c4911ebe3 t/io_multihomed.t
+SHA1 f8d3184feb386124230d07d0919f4d172322e023 t/io_pipe.t
 SHA1 d0565aff22dd3eb8bea90952ba57244278c00a30 t/io_poll.t
 SHA1 997bf026a7ce78ebc8c9dc70d8969e05273d1eb3 t/io_sel.t
-SHA1 ca85fbb5e3b096530f1d040960eca0bef588de7b t/io_sock.t
-SHA1 24f0657e9274cc106c32c9894d29d9c1ccc6e0a6 t/io_taint.t
+SHA1 03339c7176c1920f416f74c1a27d7fa29a0c7628 t/io_sock.t
+SHA1 3d550d509d77634fad9d8062da328e14e92a0101 t/io_taint.t
 SHA1 dfd2dc1376acd3cc61185ce43112bf2124750c2a t/io_tell.t
-SHA1 7ceb7e024b9dbf2a6714e6b04948fb0f80c77e3c t/io_udp.t
-SHA1 c0d9115cc22fb7374b2b771b65ee114bea32fcea t/io_unix.t
+SHA1 03780c5fb6553a80f2ce896e008ce8cdefc55e46 t/io_udp.t
+SHA1 6221ba862c949dca9e0febd8855ad02c6d3caa2c t/io_unix.t
 SHA1 9fa2fc325b11d87c3097cca61e3af3a016709219 t/io_utf8.t
 SHA1 3b445ba14e47c16f0a72a99cdce8e4021e6b526a t/io_xs.t
-SHA1 15a86157412cbc21a46686dd3db7e2f888faf0b0 t/test.pl
+SHA1 2393b3e585978305e31ad3d898649f058f451ee9 t/test.pl
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.7 (GNU/Linux)
+Version: GnuPG v1.4.9 (Darwin)
 
-iD8DBQFEKyPiR0BL4gbYw3QRAnSuAJ9ClqofWFICpTVqo+hiRXGnnIbvZQCfZ6UM
-y3lQzkuxWxPjiOIewldJCTs=
-=4f+b
+iEYEARECAAYFAkoIfV0ACgkQR0BL4gbYw3R1aQCgjKDbRGTi5LUDdn/Esb7mtHTQ
+jAcAnROJE/aBS/3AK85u6fPTZyRAeF7a
+=2DBB
 -----END PGP SIGNATURE-----

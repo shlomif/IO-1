@@ -121,7 +121,12 @@ io_blocking(pTHX_ InputStream f, int block)
     }
     return RETVAL;
 #else
+#   ifdef WIN32
+    char flags = (char)block;
+    return ioctl(PerlIO_fileno(f), FIONBIO, &flags);
+#   else
     return -1;
+#   endif
 #endif
 }
 
@@ -133,9 +138,9 @@ fgetpos(handle)
     CODE:
 	if (handle) {
 #ifdef PerlIO
-	    ST(0) = sv_newmortal();
 #if PERL_VERSION < 8
 	    Fpos_t pos;
+	    ST(0) = sv_newmortal();
 	    if (PerlIO_getpos(handle, &pos) != 0) {
 		ST(0) = &PL_sv_undef;
 	    }
@@ -143,6 +148,7 @@ fgetpos(handle)
 		sv_setpvn(ST(0), (char *)&pos, sizeof(Fpos_t));
 	    }
 #else
+	    ST(0) = sv_newmortal();
 	    if (PerlIO_getpos(handle, ST(0)) != 0) {
 		ST(0) = &PL_sv_undef;
 	    }
@@ -204,7 +210,7 @@ MODULE = IO	PACKAGE = IO::File	PREFIX = f
 
 void
 new_tmpfile(packname = "IO::File")
-    char *	packname
+    const char * packname
     PREINIT:
 	OutputStream fp;
 	GV *gv;
@@ -215,8 +221,9 @@ new_tmpfile(packname = "IO::File")
 	fp = tmpfile();
 #endif
 	gv = (GV*)SvREFCNT_inc(newGVgen(packname));
-	hv_delete(GvSTASH(gv), GvNAME(gv), GvNAMELEN(gv), G_DISCARD);
-	if (do_open(gv, "+>&", 3, FALSE, 0, 0, fp)) {
+	if (gv)
+	    hv_delete(GvSTASH(gv), GvNAME(gv), GvNAMELEN(gv), G_DISCARD);
+	if (gv && do_open(gv, "+>&", 3, FALSE, 0, 0, fp)) {
 	    ST(0) = sv_2mortal(newRV((SV*)gv));
 	    sv_bless(ST(0), gv_stashpv(packname, TRUE));
 	    SvREFCNT_dec(gv);   /* undo increment in newRV() */
