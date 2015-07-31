@@ -1,4 +1,7 @@
-IO 1.36_01 -- Jun 27 2015 - Todd Rinaldo
+IO 1.36_02 -- Jul 31 2015 - Todd Rinaldo
+  * Proposed fix for perl #125723 (not accepted upstream yet)
+
+IO 1.36_01 -- Jul 27 2015 - Todd Rinaldo
   * Dev release for public testing.
 
 IO 1.36 -- Jun 26 2015
