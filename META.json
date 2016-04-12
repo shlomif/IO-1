@@ -4,7 +4,7 @@
       "Graham Barr <gbarr@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "ExtUtils::MakeMaker version 7.04, CPAN::Meta::Converter version 2.150001",
+   "generated_by" : "ExtUtils::MakeMaker version 7.0401, CPAN::Meta::Converter version 2.150001",
    "license" : [
       "perl_5"
    ],
@@ -37,5 +37,5 @@
       }
    },
    "release_status" : "testing",
-   "version" : "1.35_02"
+   "version" : "1.36_01"
 }
