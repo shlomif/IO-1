@@ -5,7 +5,7 @@ BEGIN {
 	print "1..0 # Skip: not perlio\n";
 	exit 0;
     }
-    require($ENV{PERL_CORE} ? "../../t/test.pl" : "../t/test.pl");
+    require($ENV{PERL_CORE} ? "../../t/test.pl" : "./t/test.pl");
 }
 
 use utf8;
