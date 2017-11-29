@@ -11,6 +11,10 @@
 #define PERLIO_NOT_STDIO 1
 #include "perl.h"
 #include "XSUB.h"
+#define NEED_eval_pv
+#define NEED_newCONSTSUB
+#define NEED_newSVpvn_flags
+#include "ppport.h"
 #include "poll.h"
 #ifdef I_UNISTD
 #  include <unistd.h>
@@ -300,7 +304,7 @@ new_tmpfile(packname = "IO::File")
 	if (gv)
 	    (void) hv_delete(GvSTASH(gv), GvNAME(gv), GvNAMELEN(gv), G_DISCARD);
 	if (gv && do_open(gv, "+>&", 3, FALSE, 0, 0, fp)) {
-	    ST(0) = sv_2mortal(newRV((SV*)gv));
+	    ST(0) = sv_2mortal(newRV_inc((SV*)gv));
 	    sv_bless(ST(0), gv_stashpv(packname, TRUE));
 	    SvREFCNT_dec(gv);   /* undo increment in newRV() */
 	}
