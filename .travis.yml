@@ -17,17 +17,33 @@ perl:
   - "5.26-shrplib"
   - "dev"
   - "blead"
+
+before_install:
+  - mkdir /home/travis/bin || true
+  - ln -s `which true` /home/travis/bin/cpansign
+  - eval $(curl https://travis-perl.github.io/init) --auto
 install:
   - export AUTOMATED_TESTING=1 HARNESS_TIMER=1 AUTHOR_TESTING=0 RELEASE_TESTING=0
+  #- cpan-install --deps       # installs prereqs, including recommends
+  #- cpan-install Test::LeakTrace
+  - cpan-install --coverage   # installs coverage prereqs, if enabled
+
+before_script:
+  - coverage-setup
+
 notifications:
   email:
     on_success: change
     on_failure: always
+
 matrix:
   fast_finish: true
+  include:
+  allow_failures:
+    - env: COVERAGE=1 AUTHOR_TESTING=1
+    - perl: "blead"
+
+# Hack to not run on tag pushes:
 branches:
   except:
   - /^v?[0-9]+\.[0-9]+/
-  - /^gitpan_version/
-  - /^cpan_version/
-  - /^cpan_path/
