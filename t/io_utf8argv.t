@@ -22,7 +22,7 @@ my $bytes =
             "\xcd\xbe\x0a";
 
 if ($::IS_EBCDIC) {
-    require($ENV{PERL_CORE} ? "../../t/charset_tools.pl" : "../t/charset_tools.pl");
+    require($ENV{PERL_CORE} ? "../../t/charset_tools.pl" : "./t/charset_tools.pl");
     $bytes = byte_utf8a_to_utf8n($bytes)
 }
 

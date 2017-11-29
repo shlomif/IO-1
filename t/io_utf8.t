@@ -9,13 +9,9 @@ BEGIN {
 
 require($ENV{PERL_CORE} ? "../../t/test.pl" : "./t/test.pl");
 
-# Win32 below perl 5.18 seems to have an issue with EOF and large buffers. Perl #125723
-my $is_broken_win32 = ($^O eq 'MSWin32' && $] < 5.018) ? 1 : 0;
+my $buf_size_count = 8200;      # Above default buffer size of 8192
 
-# Above default buffer size of 8192 except on windows below 5.18 which can't handle it.
-my $buf_size_count = $is_broken_win32 ? 3455 : 8200;
-
-plan(tests => 6 + 2 * $buf_size_count);
+plan(tests => 5 + 2 * $buf_size_count);
 
 my $io;
 
@@ -30,10 +26,7 @@ undef $io;
 $io = IO::File->new;
 ok($io->open("io_utf8", "<:utf8"), "open <:utf8");
 is(ord(<$io>), 256, "readline chr(256)");
-undef $io;
 
-$io = IO::File->new;
-ok($io->open("io_utf8", "<:utf8"), "open <:utf8");
 for my $i (0 .. $buf_size_count - 1) {
     is($io->ungetc($i), $i, "ungetc of $i returns itself");
 }
