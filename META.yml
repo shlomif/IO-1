@@ -20,5 +20,5 @@ no_index:
 requires:
   File::Temp: '0.15'
   Test::More: '0'
-version: 1.38_02
+version: '1.38'
 x_serialization_backend: 'CPAN::Meta::YAML version 0.018'
