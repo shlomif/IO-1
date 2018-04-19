@@ -1,8 +1,19 @@
-IO 1.38_02 -- Apr 19 2018 - Todd Rinaldo
-  * Minor change from blead in IO.xs
-  * Bump version for re-test via cpan testers
-IO 1.36_01 -- Jul 31 2015 - Todd Rinaldo
-  * Proposed fix for perl #125723 (not accepted upstream yet)
+IO 1.38 -- Apr 19 2018 - Todd Rinaldo
+  * Bump all IO modules to 1.38 and set required Perl to 5.8.1
+  * Fix for perl #125723
+  * IO test: adjust require for non CORE perl
+  * IO::Handle - fix precedence issue
+  * Document IO::Select error detection
+  * Rely on C89 <time.h>
+  * (perl #130856) deal with unpack_sockaddr_un() croaking
+  * Switch most open() calls to three-argument form.
+  * (perl #129788) IO::Poll: fix memory leak
+  * (perl #128095) check pack_sockaddr_un()'s return value
+  * dist/: remove . from @INC when loading optional modules
+  * Fix IO::Handle documentation mangled by a manually applied patch
+  * Make IO::Poll->poll call _poll even with an empty fd array
+  * Fix assertion when calling IO::Poll::_poll() with an empty fd array
+  * Some BSD implementations might have <sys/poll.h> instead of <poll.h>.
 
 IO 1.36 -- Jun 26 2015
   * dist/IO/t/io_utf8argv.t: Generalize for non-ASCII platforms.
@@ -12,7 +23,6 @@ IO 1.36 -- Jun 26 2015
   * Use <sys/poll.h> if available before going select().
   * Fix assertion when calling IO::Poll::_poll() with an empty fd array
   * Make IO::Poll->poll call _poll even with an empty fd array
-  * 
 
 IO 1.35 -- Dec 7 2014 (Not released to CPAN)
   * Change OP_SIBLING to OpSIBLING
