@@ -14,10 +14,12 @@ lib/IO/Socket/INET.pm
 lib/IO/Socket/UNIX.pm
 Makefile.PL
 MANIFEST			This list of files
+MANIFEST.SKIP
 META.json
 META.yml
 poll.c
 poll.h
+ppport.h
 README
 t/cachepropagate-tcp.t
 t/cachepropagate-udp.t
@@ -28,6 +30,7 @@ t/io_dir.t
 t/io_dup.t
 t/io_file.t
 t/io_file_export.t
+t/io_leak.t
 t/io_linenum.t
 t/io_multihomed.t
 t/io_pipe.t
