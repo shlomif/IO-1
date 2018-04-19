@@ -16,7 +16,7 @@ IO 1.38 -- Apr 19 2018 - Todd Rinaldo
   * Fix assertion when calling IO::Poll::_poll() with an empty fd array
   * Some BSD implementations might have <sys/poll.h> instead of <poll.h>.
 
-IO 1.36 -- Jun 26 2015
+IO 1.36 -- Jun 26 2015 (Not released to CPAN)
   * dist/IO/t/io_utf8argv.t: Generalize for non-ASCII platforms.
   * VMS does have fsync, so configure accordingly.
   * Skip obsolete skip in io_xs.t.
