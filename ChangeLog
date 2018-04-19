@@ -1,4 +1,5 @@
 IO 1.38 -- Apr 19 2018 - Todd Rinaldo
+  * Remove pre 5.8 logic from code base.
   * Bump all IO modules to 1.38 and set required Perl to 5.8.1
   * Fix for perl #125723
   * IO test: adjust require for non CORE perl
