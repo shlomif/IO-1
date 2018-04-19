@@ -30,6 +30,7 @@ perl:
   - "blead-thr"
 install:
   - export AUTOMATED_TESTING=1 HARNESS_TIMER=1 AUTHOR_TESTING=0 RELEASE_TESTING=0
+  - cpanm --quiet --installdeps --notest .
 notifications:
   email:
     on_success: change

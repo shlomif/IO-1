@@ -35,6 +35,7 @@ WriteMakefile(
   AUTHOR       => 'Graham Barr <gbarr@cpan.org>',
   PREREQ_PM    => {
     'Test::More' => 0,
+    'File::Temp' => '0.15',
   },
   ( $PERL_CORE
     ? ()
