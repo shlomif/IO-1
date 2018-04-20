@@ -57,7 +57,21 @@ sub _fileno
  my($self, $f) = @_;
  return unless defined $f;
  $f = $f->[0] if ref($f) eq 'ARRAY';
- ($f =~ /^\d+$/) ? $f : fileno($f);
+ if($f =~ /^\d+$/) { # plain file number
+  return $f;
+ }
+ elsif(defined(my $fd = fileno($f))) {
+  return $fd;
+ }
+ else {
+  # Neither a plain file number nor an opened filehandle; but maybe it was
+  # previously registered and has since been closed. ->remove still wants to
+  # know what fileno it had
+  foreach my $i ( FIRST_FD .. $#$self ) {
+   return $i - FIRST_FD if $self->[$i] == $f;
+  }
+  return undef;
+ }
 }
 
 sub _update
