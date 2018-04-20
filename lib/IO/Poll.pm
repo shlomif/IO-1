@@ -10,6 +10,7 @@ package IO::Poll;
 use strict;
 use IO::Handle;
 use Exporter ();
+use Scalar::Util qw( refaddr );
 
 our @ISA = qw(Exporter);
 our $VERSION = "1.39";
@@ -30,9 +31,9 @@ our @EXPORT_OK = qw(
  POLLNORM
 	       );
 
-# [0] maps fd's to requested masks
+# [0] maps fd's to hashes that map handles to requested masks
 # [1] maps fd's to returned  masks
-# [2] maps fd's to handles
+# [2] maps handle addrs to handles
 sub new {
     my $class = shift;
 
@@ -49,22 +50,22 @@ sub mask {
     if (@_) {
 	my $mask = shift;
 	if($mask) {
-	  $self->[0]{$fd}{$io} = $mask; # the error events are always returned
-	  $self->[1]{$fd}      = 0;     # output mask
-	  $self->[2]{$io}      = $io;   # remember handle
+	  $self->[0]{$fd}{refaddr $io} = $mask; # the error events are always returned
+	  $self->[1]{$fd}              = 0;     # output mask
+	  $self->[2]{refaddr $io}      = $io;   # remember handle
 	} else {
-          delete $self->[0]{$fd}{$io};
+          delete $self->[0]{$fd}{refaddr $io};
           unless(%{$self->[0]{$fd}}) {
             # We no longer have any handles for this FD
             delete $self->[1]{$fd};
             delete $self->[0]{$fd};
           }
-          delete $self->[2]{$io};
+          delete $self->[2]{refaddr $io};
 	}
     }
     
-    return unless exists $self->[0]{$fd} and exists $self->[0]{$fd}{$io};
-	return $self->[0]{$fd}{$io};
+    return unless exists $self->[0]{$fd} and exists $self->[0]{$fd}{refaddr $io};
+	return $self->[0]{$fd}{refaddr $io};
 }
 
 
@@ -99,8 +100,8 @@ sub events {
     my $self = shift;
     my $io = shift;
     my $fd = fileno($io);
-    exists $self->[1]{$fd} and exists $self->[0]{$fd}{$io} 
-                ? $self->[1]{$fd} & ($self->[0]{$fd}{$io}|POLLHUP|POLLERR|POLLNVAL)
+    exists $self->[1]{$fd} and exists $self->[0]{$fd}{refaddr $io} 
+                ? $self->[1]{$fd} & ($self->[0]{$fd}{refaddr $io}|POLLHUP|POLLERR|POLLNVAL)
 	: 0;
 }
 

@@ -35,4 +35,4 @@ test_script:
   - 'prove -l t'
 
 matrix:
- fast_finish: true
+ fast_finish: false
