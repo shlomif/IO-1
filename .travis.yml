@@ -46,5 +46,6 @@ branches:
   - /^gitpan_version/
   - /^cpan_version/
   - /^cpan_path/
+  - /^issue\d+/
 before_install:
   - eval $(curl https://travis-perl.github.io/init) --auto
